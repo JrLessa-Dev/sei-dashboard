@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SEI - Sistema Eletrônico de Inclusão</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlalDLuLwH7K7WJj/YlB/A/2wK6L1A2ZlXz6w/b2q5uM5s/J3+Cg5j0J0+Y+3O4P/2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.js"></script>
+</head>
+<body>
+  <div class="container" id="auth-container">
+    <div class="form-box">
+      <header class="logo-header">
+        <img src="logo.jpg" alt="Logo do Sistema Eletrônico de Inclusão (SEI)" class="logo">
+        <h1>SEI</h1>
+        <p class="subtitle">Sistema Eletrônico de Inclusão</p>
+      </header>
+
+      <main>
+        <form id="login-form" aria-labelledby="login-heading">
+          <h2 id="login-heading" class="form-title">Acessar sua Conta</h2>
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="voce@exemplo.com" autocomplete="email" required aria-describedby="email-hint" />
+            <small id="email-hint" class="input-hint">Ex: seu.nome@empresa.com.br</small>
+            <span id="login-email-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Senha</label>
+            <input type="password" id="login-password" placeholder="********" autocomplete="current-password" required aria-describedby="password-hint" />
+            <small id="password-hint" class="input-hint">Mínimo de 6 caracteres.</small>
+            <span id="login-password-error" class="error-message"></span>
+          </div>
+
+          <fieldset class="form-group role-select">
+            <legend class="label-radio">Entrar como:</legend>
+            <div class="radio-options">
+              <label for="role-colaborador">
+                <input type="radio" id="role-colaborador" name="role" value="colaborador" checked />
+                <span><i class="fas fa-user"></i> Colaborador</span>
+              </label>
+              <label for="role-gerente">
+                <input type="radio" id="role-gerente" name="role" value="gerente" />
+                <span><i class="fas fa-user-tie"></i> Gerente/RH/Enfermagem</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn-primary">Entrar</button>
+          <p class="switch-form">Ainda não tem conta? <a href="#" id="show-register-link">Cadastre-se</a></p>
+        </form>
+
+        <form id="register-form" aria-labelledby="register-heading" style="display: none;">
+          <h2 id="register-heading" class="form-title">Criar Nova Conta</h2>
+          <div class="form-group">
+            <label for="register-name">Nome Completo</label>
+            <input type="text" id="register-name" placeholder="Seu nome" autocomplete="name" required aria-describedby="name-hint" />
+            <small id="name-hint" class="input-hint">Nome e sobrenome.</small>
+            <span id="register-name-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email</label>
+            <input type="email" id="register-email" placeholder="voce@exemplo.com" autocomplete="email" required aria-describedby="register-email-hint" />
+            <small id="register-email-hint" class="input-hint">Usaremos para comunicação e login.</small>
+            <span id="register-email-error" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="register-password">Senha</label>
+            <input type="password" id="register-password" placeholder="********" autocomplete="new-password" required aria-describedby="register-password-hint" />
+            <small id="register-password-hint" class="input-hint">Mínimo de 8 caracteres, com letras e números.</small>
+            <span id="register-password-error" class="error-message"></span>
+          </div>
+          <button type="submit" class="btn-primary">Cadastrar</button>
+          <p class="switch-form">Já tem conta? <a href="#" id="show-login-link">Entrar</a></p>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <div class="dashboard" id="dashboard" style="display: none;">
+    <header class="dashboard-header">
+      <div class="dashboard-header-left">
+        <img src="logo.jpg" alt="Logo do Sistema Eletrônico de Inclusão (SEI)" class="logo-header-img">
+        <h1 class="welcome-message">Bem-vindo(a), <span id="userName">Usuário</span> 👋</h1>
+      </div>
+      <button class="btn-secondary logout-button"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </header>
+
+    <main class="dashboard-main-content">
+      <nav class="dashboard-nav" id="dashboard-nav">
+        </nav>
+      <div id="dashboard-sections-container" class="dashboard-sections-container">
+        <p class="initial-dashboard-message" id="initial-dashboard-message">Carregando conteúdo personalizado...</p>
+      </div>
+    </main>
+
+    <footer class="dashboard-footer">
+      <p>&copy; 2025 SEI - Sistema Eletrônico de Inclusão. Todos os direitos reservados.</p>
+    </footer>
+  </div>
+
+  <div id="global-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modal-title"></h2>
+      <div id="modal-body">
+        </div>
+    </div>
+  </div>
+
+  <div id="feedback-message" class="feedback-message" style="display: none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
